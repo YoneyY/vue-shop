@@ -3,3 +3,11 @@ html,body,#app{
     margin: 0;
     padding: 0;
 }
+
+.el-submenu__title,.el-submenu__title {
+    font-size: 13px;
+}
+
+i.iconfont {
+    margin-right:20px;
+}

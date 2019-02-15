@@ -3,7 +3,7 @@
     <div id="login-box">
       <!-- 登录logo -->
       <div id="login-logo">
-        <img src="../assets/logo.png" alt="用户登录logo">
+        <img src="../assets/img/logo.png" alt="用户登录logo">
       </div>
       <el-form ref="loginFormRef" :model="loginForm" :rules="loginFormRules">
         <el-form-item prop="username">
@@ -34,8 +34,8 @@ export default {
   data () {
     return {
       loginForm:{
-        username:'',
-        password:''
+        username:'admin',
+        password:'123456'
       },
       loginFormRules:{
         username : [
@@ -51,7 +51,7 @@ export default {
     login () {
       this.$refs.loginFormRef.validate(async vali=>{
         const {data:ret} = await this.$http.post('login',this.loginForm);
-        console.log(ret);
+        // console.log(ret);
         if(ret.meta.status != 200){
           return this.$message.error('用户名或密码不正确');
         }
