@@ -24,27 +24,27 @@
         line-height:25px;
         background-color:rgb(74,80,100);
         cursor:pointer;
-        user-select:none;"
+        user-select:none;
+        letter-spacing:0.1em;"
           @click="menuShow=!menuShow"
         >|||</div>
         <!-- 侧边栏 -->
         <el-menu
-          background-color="#545c64"
+          background-color="#333744"
           text-color="#fff"
           active-text-color="#409EFF"
           :unique-opened="true"
-          :collapse="menuShow"
-          :style="menuShow ? 'width:65px' : 'width:200px'"
+          :collapse="menuShow"     
           :collapse-transition="false"
           :router="true"
         >
-          <el-submenu :index="item.id + ''" v-for="(item,i) in menuList" :key="item.id">
+          <el-submenu :index="item.id + ''" v-for="(item,i) in menuList" :key="item.id" :style="menuShow ? 'width:65px' : 'width:200px'">
             <template slot="title">
               <i :class="'iconfont icon-' + menuIcon[i]"></i>
               <span>{{item.authName}}</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item :index="item2.path" v-for="item2 in item.children" :key="item2.id"><i class="el-icon-menu"></i><span>{{item.authName}}</span></el-menu-item>
+              <el-menu-item :index="item2.path" v-for="item2 in item.children" :key="item2.id"><i class="el-icon-menu"></i><span>{{item2.authName}}</span></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>

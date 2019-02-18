@@ -60,7 +60,7 @@ export default {
         window.sessionStorage.setItem('token',ret.data.token)
 
         // user : admin  pwd : 123456  使用此账号登录
-        this.$router.push('/home');
+        this.$router.push('/welcome');
         this.$message.success('登录成功')
       })
       
