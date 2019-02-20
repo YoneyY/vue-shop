@@ -5,16 +5,11 @@
 </template>
 
 <script>
-
 export default {
-  data () {
-    return {
-
-    }
+  data() {
+    return {};
   }
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

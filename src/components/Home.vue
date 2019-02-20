@@ -2,16 +2,10 @@
   <el-container>
     <el-header>
       <div id="logo-box">
-        <img
-          src="../assets/img/heima.png"
-          alt=""
-        >
+        <img src="../assets/img/heima.png" alt="" />
         <span>电商管理后台系统</span>
       </div>
-      <el-button
-        type="info"
-        @click="logout"
-      >退出</el-button>
+      <el-button type="info" @click="logout">退出</el-button>
     </el-header>
     <el-container>
       <el-aside :width="menuShow ? '65px' : '200px'">
@@ -26,25 +20,38 @@
         cursor:pointer;
         user-select:none;
         letter-spacing:0.1em;"
-          @click="menuShow=!menuShow"
-        >|||</div>
+          @click="menuShow = !menuShow"
+        >
+          |||
+        </div>
         <!-- 侧边栏 -->
         <el-menu
           background-color="#333744"
           text-color="#fff"
           active-text-color="#409EFF"
           :unique-opened="true"
-          :collapse="menuShow"     
+          :collapse="menuShow"
           :collapse-transition="false"
           :router="true"
         >
-          <el-submenu :index="item.id + ''" v-for="(item,i) in menuList" :key="item.id" :style="menuShow ? 'width:65px' : 'width:200px'">
+          <el-submenu
+            :index="item.id + ''"
+            v-for="(item, i) in menuList"
+            :key="item.id"
+            :style="menuShow ? 'width:65px' : 'width:200px'"
+          >
             <template slot="title">
               <i :class="'iconfont icon-' + menuIcon[i]"></i>
-              <span>{{item.authName}}</span>
+              <span>{{ item.authName }}</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item :index="item2.path" v-for="item2 in item.children" :key="item2.id"><i class="el-icon-menu"></i><span>{{item2.authName}}</span></el-menu-item>
+              <el-menu-item
+                :index="item2.path"
+                v-for="item2 in item.children"
+                :key="item2.id"
+                ><i class="el-icon-menu"></i
+                ><span>{{ item2.authName }}</span></el-menu-item
+              >
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
@@ -65,7 +72,7 @@ export default {
     return {
       menuShow: false,
       menuList: [],
-      menuIcon: ['users','tijikongjian','shangpin','danju','baobiao']
+      menuIcon: ["users", "tijikongjian", "shangpin", "danju", "baobiao"]
     };
   },
   methods: {
@@ -73,17 +80,17 @@ export default {
       this.$confirm("确定要退出吗？", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
-        type:'warning'
+        type: "warning"
       })
         .then(() => {
           window.sessionStorage.removeItem("token");
           this.$message.success("退出成功");
-          this.$router.push('/login');
+          this.$router.push("/login");
         })
         .catch(() => {});
     },
-    async getMenuList () {
-      const {data:ret} = await this.$http.get('menus');
+    async getMenuList() {
+      const { data: ret } = await this.$http.get("menus");
       console.log(ret);
       this.menuList = ret.data;
     }
